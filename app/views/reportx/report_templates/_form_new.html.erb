@@ -1,0 +1,17 @@
+<%= simple_form_for @report_template do |f| %>    
+ 
+  <%= f.input :name, :label => 'TemplateName:' %>  
+  <%= f.input :description, :label => 'Description', :input_html => {:rows => 6} %>
+  <%= f.input :report_type_id, :label => 'ReportType:', :collection => Reportx::ReportType.where(:active => true).where("id") %>
+  
+  <div class="simple_form_title">报告前言：</div>
+  <p><%= link_to_add_fields "加前言", f, :template_forewords %></p>
+  <div class="simple_form_title">报告章节内容：</div>
+  <p><%= link_to_add_fields "加章节内容", f, :template_contents %></p>
+  <div class="simple_form_title">报告附录：</div>
+  <p><%= link_to_add_fields "加附录", f, :template_appendixes %></p>
+  
+  <%= f.button :submit, 'Save' %>  
+<% end %>  
+
+

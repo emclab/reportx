@@ -1,0 +1,6 @@
+<div class="fields">
+  <%= f.input :section_num, :label => '节#：', :prompt => 'ex 1,2,3' %>
+  <%= f.input :subject, :label => '标题：', :required => true %>
+  <%= f.input :content, :label => '内容/要求：', :input_html => {:rows => 8} %>
+  <%= link_to_remove_fields "删除", f %>
+</div>

@@ -1,0 +1,31 @@
+<<div id="main_body">
+  <h1>Report Templates</h1>
+  <table>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>CreateDate</th>
+      <th>ReportType</th>
+      <th>Active</th>
+      <th>LastUpdatedBy</th>
+      <th></th>
+    </tr>
+
+    <% @report_templates.each do |r| %>
+        <tr>
+          <td><%= r.id %></td>
+          <td><%= r.name %></td>
+          <td><%= (r.created_at + 8.hours).strftime("%Y/%m/%d")%></td>
+          <td><%= r.report_type.name %></td>
+          <td><%= r.active %></td>
+          <td><%= r.last_updated_by.name %></td>
+          <td><%= link_to 'Edit', SUBURI + "/authentify/view_handler?index=1&url=#{edit_report_template_path(r)}" if has_update_right?("reportx_report_templates") %><</td>
+        </tr>
+    <% end %>
+
+  </table>
+
+  <%= link_to 'Back', SUBURI + "/authentify/view_handler?index=0", :id => 'close' %>&nbsp;&nbsp;
+  <%= link_to 'New Report Template', SUBURI + "/authentify/view_handler?index=1&url=#{new_report_template_path}" if has_create_right?("reportx_report_templates")%>
+
+</div>
